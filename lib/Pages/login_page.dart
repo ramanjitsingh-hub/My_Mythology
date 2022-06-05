@@ -2,17 +2,8 @@ import 'dart:ui';
 
 import "package:flutter/material.dart";
 
-void main() {
-  runApp(LoginPage(
-    
-  ));
-  
-  
-}
-
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
-  
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -21,9 +12,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
@@ -37,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 150,
               ),
               Row(
@@ -54,14 +44,14 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-              SizedBox(height: 80),
+              const SizedBox(height: 80),
               Padding(
                 padding: const EdgeInsets.only(right: 50, left: 50),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           labelText: 'E-Mail',
                           hintText: "Yourname@example.com ",
                           hintStyle: TextStyle(color: Colors.grey),
@@ -72,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                           )),
                     ),
                     TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           labelText: 'Password',
                           hintText: "yourpassword",
                           hintStyle: TextStyle(color: Colors.grey),
@@ -85,14 +75,14 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               Container(
                 height: 50,
                 width: 150,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Sign In",
+                    const Text("Sign In",
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.white, fontSize: 25)),
                   ],
@@ -102,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                   color: Colors.black45,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 100,
               ),
               Padding(
@@ -110,14 +100,14 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Don't Have A account? Create One",
+                    const Text("Don't Have A account? Create One",
                         style: TextStyle(color: Colors.white, fontSize: 15)),
                     Row(
                       children: [
-                        Text("Sign Up",
+                        const Text("Sign Up",
                             style:
                                 TextStyle(color: Colors.white, fontSize: 15)),
-                        Icon(Icons.arrow_forward_ios_rounded,
+                        const Icon(Icons.arrow_forward_ios_rounded,
                             color: Colors.white)
                       ],
                     ),
