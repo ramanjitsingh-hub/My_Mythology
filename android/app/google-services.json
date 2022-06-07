@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "513091290577",
+    "project_id": "my-mythology",
+    "storage_bucket": "my-mythology.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513091290577:android:44e9414fae6a41b0248cf0",
+        "android_client_info": {
+          "package_name": "com.example.my_mythology"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513091290577-rjm9endfhp1304dqnbp9ntt5a8tpu15e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqXpvqrXFMJPSnF7lCT86a2jahbXmY18g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513091290577-rjm9endfhp1304dqnbp9ntt5a8tpu15e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "513091290577-huj9htgbrl9pbku9aaq10423o8f0agut.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myMythology"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,7 @@
-import 'dart:ui';
-
+import 'package:firebase_core/firebase_core.dart';
 import "package:flutter/material.dart";
+import "package:firebase_auth/firebase_auth.dart";
+import "package:my_mythology/firebase_options.dart";
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -10,6 +11,23 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  late final TextEditingController _email;
+  late final TextEditingController _password;
+  @override
+  void initState() {
+    _email = TextEditingController();
+    _password = TextEditingController();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _email.dispose();
+    _password.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,6 +69,9 @@ class _LoginPageState extends State<LoginPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextFormField(
+                      controller: _email,
+                      enableSuggestions: true,
+                      keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
                           labelText: 'E-Mail',
                           hintText: "Yourname@example.com ",
@@ -62,6 +83,10 @@ class _LoginPageState extends State<LoginPage> {
                           )),
                     ),
                     TextFormField(
+                      controller: _password,
+                      obscureText: true,
+                      enableSuggestions: false,
+                      autocorrect: false,
                       decoration: const InputDecoration(
                           labelText: 'Password',
                           hintText: "yourpassword",
@@ -79,17 +104,29 @@ class _LoginPageState extends State<LoginPage> {
               Container(
                 height: 50,
                 width: 150,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text("Sign In",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white, fontSize: 25)),
-                  ],
-                ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.black45,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      onPressed: () async {
+                        final email = _email.text;
+                        final password = _password.text;
+                        await Firebase.initializeApp( 
+                          options: DefaultFirebaseOptions.currentPlatform
+                        );
+                        await FirebaseAuth.instance
+                            .createUserWithEmailAndPassword(
+                                email: email, password: password);
+                      },
+                      child: const Text("Sign In",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white, fontSize: 25)),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(
@@ -103,11 +140,11 @@ class _LoginPageState extends State<LoginPage> {
                     const Text("Don't Have A account? Create One",
                         style: TextStyle(color: Colors.white, fontSize: 15)),
                     Row(
-                      children: [
-                        const Text("Sign Up",
+                      children: const [
+                        Text("Sign Up",
                             style:
                                 TextStyle(color: Colors.white, fontSize: 15)),
-                        const Icon(Icons.arrow_forward_ios_rounded,
+                        Icon(Icons.arrow_forward_ios_rounded,
                             color: Colors.white)
                       ],
                     ),
