@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_mythology/Pages/on_boarding_screen.dart';
+import 'package:my_mythology/Pages/login_page.dart';
+
 
 
 void main() {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
           
         ),
         home:const Scaffold(
-          body: Onboarding_Screen(),
+          body: LoginPage(),
         ),
     );
   }

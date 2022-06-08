@@ -3,14 +3,14 @@ import "package:flutter/material.dart";
 import "package:firebase_auth/firebase_auth.dart";
 import "package:my_mythology/firebase_options.dart";
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegisterationPage extends StatefulWidget {
+  const RegisterationPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterationPage> createState() => _RegisterationPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterationPageState extends State<RegisterationPage> {
   late final TextEditingController _email;
   late final TextEditingController _password;
   @override
@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   Text(
-                    "Login",
+                    "Register",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -119,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                           options: DefaultFirebaseOptions.currentPlatform
                         );
                         await FirebaseAuth.instance
-                            .signInWithEmailAndPassword(
+                            .createUserWithEmailAndPassword(
                                 email: email, password: password);
                       },
                       child: const Text("Login",
@@ -137,11 +137,11 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("Don't Have A account? Create One",
+                    const Text("Already Have a Account? ",
                         style: TextStyle(color: Colors.white, fontSize: 15)),
                     Row(
                       children: const [
-                        Text("Register",
+                        Text("Login",
                             style:
                                 TextStyle(color: Colors.white, fontSize: 15)),
                         Icon(Icons.arrow_forward_ios_rounded,
