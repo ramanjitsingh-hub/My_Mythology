@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_mythology/Pages/home_page.dart';
 import 'package:my_mythology/Pages/login_page.dart';
 import 'package:my_mythology/Pages/registeration_page.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.grey[350],
       ),
       home: const Scaffold(
-        body: RegisterationPage(),
+        body: HomePage(),
       ),
     );
   }
