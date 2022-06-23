@@ -30,24 +30,28 @@ class _RegisterationPageState extends State<RegisterationPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [
-            Colors.black,
-            Colors.greenAccent,
-            Colors.black,
-          ])),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: SingleChildScrollView(
-          child: FutureBuilder(
-            builder: (context, snapshot) {
-              switch (snapshot.connectionState) {
-                case ConnectionState.done:
-                  return Column(
+    return Scaffold(
+      body: Container(
+        
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [
+              Colors.black,
+              Colors.greenAccent,
+              Colors.black,
+            ])),
+        child: FutureBuilder(
+           future: Firebase.initializeApp(
+                    options: DefaultFirebaseOptions.currentPlatform),
+          builder: (context, snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.done:
+                return SingleChildScrollView(
+                  child: Column(
                     children: [
                       const SizedBox(
                         height: 150,
@@ -156,10 +160,13 @@ class _RegisterationPageState extends State<RegisterationPage> {
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 15)),
                             Row(
-                              children: const [
-                                Text("Login",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 15)),
+                              children:  [
+                                TextButton(
+                                  onPressed: () => Navigator.of(context).pushNamed('/login/'),
+                                  child: Text("Login",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 15)),
+                                ),
                                 Icon(Icons.arrow_forward_ios_rounded,
                                     color: Colors.white)
                               ],
@@ -168,12 +175,12 @@ class _RegisterationPageState extends State<RegisterationPage> {
                         ),
                       )
                     ],
-                  );
-                default:
-                  return Text("Loading....");
-              }
-            },
-          ),
+                  ),
+                );
+              default:
+                return Center(child: Text("Loading...."));
+            }
+          },
         ),
       ),
     );
