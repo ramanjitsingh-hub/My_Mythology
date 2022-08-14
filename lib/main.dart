@@ -31,30 +31,28 @@ class MyApp extends StatelessWidget {
       },
       home: Scaffold(
         body: Container(
-          child: FutureBuilder(
-              future: Firebase.initializeApp(
-                  options: DefaultFirebaseOptions.currentPlatform),
-              builder: (context, snapshot) {
-                switch (snapshot.connectionState) {
-                  case ConnectionState.done:
-                    final user = FirebaseAuth.instance.currentUser;
-                    if (user != null) {
-                      if (user.emailVerified) {
-                        return const TilesView();
-                      }
-                      else{
-                        return const EmailVerifyPage();
-                      }
-                      }
-                      else {
+            child: FutureBuilder(
+                future: Firebase.initializeApp(
+                    options: DefaultFirebaseOptions.currentPlatform),
+                builder: (context, snapshot) {
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.done:
+                      final user = FirebaseAuth.instance.currentUser;
+                      if (user != null) {
+                        if (user.emailVerified) {
+                          return const TilesView();
+                        } else {
+                          return const EmailVerifyPage();
+                        }
+                      } else {
                         return const LoginPage();
                       }
-                      default: return const CircularProgressIndicator();
-                    }
-                }
-        )),
-        ),
-      );
-    
+                      
+                    default:
+                      return const CircularProgressIndicator();
+                  }
+                })),
+      ),
+    );
   }
 }
