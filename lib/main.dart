@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_mythology/Pages/home_page.dart';
 import 'package:my_mythology/Pages/login_page.dart';
 import 'package:my_mythology/Pages/registeration_page.dart';
-import 'package:my_mythology/Pages/tiles_view.dart';
+import 'package:my_mythology/Widgets/grid_view.dart';
 
 import 'Pages/email_verify_page.dart';
 import 'firebase_options.dart';
@@ -40,9 +40,9 @@ class MyApp extends StatelessWidget {
                       final user = FirebaseAuth.instance.currentUser;
                       if (user != null) {
                         if (user.emailVerified) {
-                          return const TilesView();
+                          return const Grid_homepage();
                         } else {
-                          return const EmailVerifyPage();
+                          return const Grid_homepage();
                         }
                       } else {
                         return const LoginPage();
